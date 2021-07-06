@@ -16,9 +16,9 @@ function App() {
     setRandomName(getName)
   }
 
-  // useEffect(() => {
-  //   buttonHandler()
-  // })
+  useEffect(() => {
+    buttonHandler()
+  })
  
 
   return (
