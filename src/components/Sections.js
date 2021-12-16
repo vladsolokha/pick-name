@@ -5,8 +5,10 @@
 
 import React, {useState} from 'react'
 import './Section.css'
+import {data} from '../data/data'
 
 function Sections(props) {
+  console.log(data)
   const sections = [
     { id:'section1', names: [] },
     { id:'section2', names: [] },
