@@ -1,26 +1,32 @@
 export const data = [
     {
-        id: 'section1',
+        id: '1',
+        number: 1,
         names: ['oden']
     },
     {
-        id: 'section2',
+        id: '2',
+        number: 2,
         names: ['twan']
     },
     {
-        id: 'section3',
+        id: '3',
+        number: 3,
         names: ['theodore']
     },
     {
-        id: 'section4',
+        id: '4',
+        number: 4,
         names: ['ford']
     },
     {
-        id: 'section5',
+        id: '5',
+        number: 5,
         names: ['fried']
     },
     {
-        id: 'section6',
+        id: '6',
+        number: 6,
         names: ['sally']
     }
 ]

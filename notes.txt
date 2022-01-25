@@ -37,3 +37,14 @@ frontend calls server using REST API -> server calls database using fetch?
 After front end is ready, develop CRUD backend using GraphQL 
 implement into AWS using docker compose
  
+1/25/2022
+scratch everything - create simple frontend
+working product that teachers can use
+even if it's on a netlify hosting server
+that I can live demo on resume
+
+concept
+6 floating bubbles of sections - use router to navigate between sections
+each section has up to 50 names of students with optional grade level
+pop a cicle button - pop a bubble reveal name
+user populates names and are saved to local storage

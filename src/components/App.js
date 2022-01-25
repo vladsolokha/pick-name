@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import './App.css';
 
 import Header from './Header';
-import Footer from './Footer';
 import Sections from './Sections';
+import Random from './Random';
+import Bubbles from './Bubbles';
+import Footer from './Footer';
 
 const sections = [
   {
@@ -61,7 +63,14 @@ function App() {
     <div className="App">
       
       <Header />
+      
       <Sections selectecClass={selectedClass} classHandler={classHandler} />
+      
+      <Random />
+
+      <Bubbles />
+
+
       <main className='main'>
 
         <div className='addName'>
