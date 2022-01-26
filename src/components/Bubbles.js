@@ -4,11 +4,14 @@
 
 
 import React from 'react';
+import './Bubbles.sass';
 
 function Footer() {
     return ( 
         
-        <></>
+        <div className='bubbles-container'>
+            <div className='bubble'>Bubble</div>
+        </div>
 
      )
 }

@@ -3,6 +3,7 @@
 // send update to student phone 
 
 import React, { useState } from "react";
+import "./Random.sass";
 
 function Random() {
     
