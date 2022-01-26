@@ -1,4 +1,4 @@
-// get all names from canvas component 
+// get all names from Bubbles component 
 // click (r key) handles random name selection 
 // send update to student phone 
 
@@ -14,7 +14,7 @@ function Random() {
         <div className="random-container">
             <button className="random-button" onClick={() => {
                 setRandomName(names[Math.floor(Math.random() * names.length)])
-            }}></button>
+            }}>POPcicle</button>
         </div>
      )
 }
