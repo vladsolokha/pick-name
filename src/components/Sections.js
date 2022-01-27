@@ -1,7 +1,6 @@
 //displays 6 sections
-//singleclick handles update canvas with new names
+//singleclick handle names of section to bubbles
 //doubleclick handles deleting names from section
-//
 
 import React, {useEffect, useState} from 'react'
 import { useSpring, animated } from 'react-spring'
@@ -21,7 +20,6 @@ function Sections(props) {
     from: { radians: 0 },
     reset: true,
     config: { duration: 6000 },
-    
   })
 
   const sectionButton = data.map(section => 
