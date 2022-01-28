@@ -9,6 +9,19 @@
     border: 1px solid black; 
 }
 
+.single-button:hover {
+    border: 1px solid white; 
+    color: white;
+    transition: color 0.5s ease;
+    transition: border 0.5s ease;
+}
+
+.single-button:focus, .single-button:active {
+    border: 1px solid green; 
+    color: green;
+
+}
+
 .sections {
     border: 1px solid lightgreen;
 }
@@ -19,18 +32,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    border: 1px solid gold;
+    /* border: 1px solid gold; */
 }
-
-.single-button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid blue;
-    width: 35px;
-    height: 45px; 
-    will-change: transform;   
-}
-
-
 

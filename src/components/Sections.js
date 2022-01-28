@@ -5,10 +5,14 @@
 import React, {useEffect, useState} from 'react'
 import { useSpring, animated } from 'react-spring'
 import './Section.css'
-import {data} from '../data/data'
 
-function Sections(props) {
-  
+function Sections({data}) {
+  const [selected, setSelected] = useState(0)
+
+  useEffect(() => {
+    console.log('selected', selected)
+  }, [selected])
+
   const interp = (i) => (r) => `translate3d(0, ${5 * Math.sin(r + (i * 2 * Math.PI) / 1.6)}px, 0)`
 
   const { radians } = useSpring({
@@ -23,14 +27,16 @@ function Sections(props) {
   })
 
   const sectionButton = data.map(section => 
-    <div className='single-button-container' >
+    
       <animated.button 
         key={section.id}
+        value={section.number}
         style={{ transform: radians.to(interp(section.id)) }}
-        className="single-button">
+        className="single-button"
+        onClick={e => setSelected(e.target.value)}>
           {section.number}
       </animated.button>
-    </div>
+    
   )
 
   return (
@@ -40,4 +46,5 @@ function Sections(props) {
     </div>
   );
 }
+
 export default Sections;

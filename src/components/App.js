@@ -6,6 +6,7 @@ import Sections from './Sections';
 import Random from './Random';
 import Bubbles from './Bubbles';
 import Footer from './Footer';
+import {data} from '../data/data'
 
 function App() {
   return (
@@ -13,11 +14,11 @@ function App() {
       
       <Header />
       
-      <Sections />
+      <Sections data={data}/>
       
       <Random />
 
-      <Bubbles />
+      <Bubbles data={data}/>
 
       <Footer />
 
