@@ -12,8 +12,8 @@ function App() {
   const [selectedSectionState, setSelectedSectionState] = useState(1)
 
   //passed to Sections component, handles section selection
-  const selectedSection = (sectionData) => {
-    setSelectedSectionState(sectionData)
+  const selectedSection = (sectionNumber) => {
+    setSelectedSectionState(sectionNumber)
   }
   
   const names = data[selectedSectionState - 1].names
@@ -22,9 +22,8 @@ function App() {
   localStorage.setItem('data', JSON.stringify(data));
   
   useEffect(() => {
-    console.log(localStorage.getItem('data'))
+    // console.log(localStorage.getItem('data'))
     console.log('selectionSectionState', selectedSectionState)
-    console.log('names', names)
   }, [selectedSectionState])
   
   return (
@@ -34,9 +33,9 @@ function App() {
       
       <Sections data={data} selectedSection={selectedSection}/>
       
-      <Random />
+      <Random names={names} selectedSection={selectedSectionState}/>
 
-      <Bubbles names={names}/>
+      <Bubbles names={names} selectedSection={selectedSectionState}/>
 
       <Footer />
 

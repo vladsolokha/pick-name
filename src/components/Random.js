@@ -2,20 +2,33 @@
 // click (r key) handles random name selection 
 // send update to student phone 
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Random.sass";
 
-function Random() {
-    
+function Random({names, selectedSection}) {
     const [randomName, setRandomName] = useState('')     
-    const [names, setNames] = useState([])
+    const [namesState, setNamesState] = useState(names)
     
+    const handleRandomName = () => {
+        setRandomName(namesState[Math.floor(Math.random() * names.length)])
+    }
+
+    useEffect(() => {
+        setNamesState(names)
+    }, [selectedSection])
 
     return ( 
         <div className="random-container">
-            <button className="random-button" onClick={() => {
-                setRandomName(names[Math.floor(Math.random() * names.length)])
-            }}>POPcicle</button>
+            <button 
+                className="random-button" 
+                onClick={handleRandomName}>
+            POPcicle
+            </button>
+        
+            <div className="display-name">
+                {randomName}
+            </div>
+            
         </div>
      )
 }
