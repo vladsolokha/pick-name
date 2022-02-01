@@ -15,7 +15,7 @@ function Random({names, selectedSection}) {
 
     useEffect(() => {
         setNamesState(names)
-    }, [selectedSection])
+    }, [selectedSection, names])
 
     return ( 
         <div className="random-container">

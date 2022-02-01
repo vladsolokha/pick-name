@@ -10,37 +10,37 @@ function Bubbles({names, selectedSection}) {
     const [inputOn, setInputOn] = useState(false)
     const [inputValue, setInputValue] = useState('')
     const [namesState, setNamesState] = useState(names)
-    
-    useEffect(() => {
-        setNamesState(names)
-        console.log('namesState is: ', namesState)
-
-        document.addEventListener('keydown', handleEsc, false)
-
-        return () => {
-            document.removeEventListener('keydown', handleEsc, false)
-        }
-    }, [selectedSection])
-
-    const handleAddName = () => { setInputOn(true) }
-
-    const handleSubmitName = (e) => {
-        setInputOn(false)
-        setNamesState([...namesState, e])
-        setInputValue('')
-    }
-
-    const handleRemoveName = (e) => {
-        namesState.splice(namesState.indexOf(e), 1)
-        setNamesState([...namesState])
-    }
-
     const handleEsc = useCallback((e) => {
         if(e.keyCode === 27) {
             setInputOn(false)
         }
     }, []);
-
+    
+    
+    const handleAddName = () => { setInputOn(true) }
+    
+    const handleSubmitName = (e) => {
+        setInputOn(false)
+        setNamesState([...namesState, e])
+        setInputValue('')
+    }
+    
+    const handleRemoveName = (e) => {
+        namesState.splice(namesState.indexOf(e), 1)
+        setNamesState([...namesState])
+    }
+    
+    useEffect(() => {
+        setNamesState(names)
+        console.log('namesState is: ', namesState)
+        
+        document.addEventListener('keydown', handleEsc, false)
+        
+        return () => {
+            document.removeEventListener('keydown', handleEsc, false)
+        }
+    }, [selectedSection, names, namesState, handleEsc])
+    
     return ( 
         
         <div 
