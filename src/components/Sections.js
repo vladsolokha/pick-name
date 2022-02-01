@@ -1,30 +1,45 @@
 //displays 6 sections
-//click handles update canvas with new names
+//singleclick handle names of section to bubbles
 //doubleclick handles deleting names from section
-//
 
-import React, {useState} from 'react'
+import React from 'react'
+import { useSpring, animated } from 'react-spring'
 import './Section.css'
 
-function Sections(props) {
-  const sections = [
-    { id:'section1', names: [] },
-    { id:'section2', names: [] },
-    { id:'section3', names: [] },
-    { id:'section4', names: [] },
-    { id:'section5', names: [] },
-    { id:'section6', names: [] }
-  ]
+function Sections({data, selectedSection}) {
+  
+  const interp = (i) => (r) => `translate3d(0, ${5 * Math.sin(r + (i * 2 * Math.PI) / 1.6)}px, 0)`
+
+  const { radians } = useSpring({
+    to: async (next) => {
+      while (1) {
+        await next({ radians: 2 * Math.PI, reset: true })
+    }
+  },
+    from: { radians: 0 },
+    reset: true,
+    config: { duration: 6000 },
+  })
+
+  const sectionButton = data.map(section => 
+    
+      <animated.button 
+        key={section.id}
+        value={section.number}
+        style={{ transform: radians.to(interp(section.id)) }}
+        className="single-button"
+        onClick={e => selectedSection(e.target.value)}>
+      {section.number}
+      </animated.button>
+    
+  )
 
   return (
-    <div className='sections'>
-      <button className='button1'>1</button>  
-      <button className='button2'>2</button>
-      <button className='button3'>3</button>
-      <button className='button4'>4</button>
-      <button className='button5'>5</button>
-      <button className='button6'>6</button>
+    <div className='sections-area'>
+      <div className='all-buttons-container'>{sectionButton}
+      </div>
     </div>
   );
 }
+
 export default Sections;

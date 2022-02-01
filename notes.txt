@@ -37,3 +37,47 @@ frontend calls server using REST API -> server calls database using fetch?
 After front end is ready, develop CRUD backend using GraphQL 
 implement into AWS using docker compose
  
+1/25/2022
+scratch everything - create simple frontend
+working product that teachers can use
+even if it's on a netlify hosting server
+that I can live demo on resume
+
+concept
+6 floating bubbles of sections - use router to navigate between sections
+each section has up to 50 names of students with optional grade level
+pop a cicle button - pop a bubble reveal name
+user populates names and are saved to local storage
+
+app is parent of header, footer, and sections
+sections is parent of bubbles and random
+
+who can modify data.js? sections (store, load, clear names) 
+app set names to local storage from data.js
+sections get names from local storage by selected number
+bubbles get names from section 
+random get names from bubbles data (can random select)
+random modify names in bubbles data
+
+
+who can temp modify names array of section?
+bubbles (...remove name, append name) and random (...remove random names)
+
+help button will display
+1. click on a section button 1-6
+2. click inside the bubbles area to create a new bubbles with a names
+3. click on the now red section button to save (store) the names
+3. double click on a bubble to pop (remove) it
+4. double click on a section button to clear all names
+5. click on POPcicle button to get a random name to pop and appear
+6. click on the same section button to restore all saved names
+
+warnings notes:
+1. if a section is red, its still in previous state.
+If user selects another section, a warning appears to confirm losing names in current active section
+2. double clicking on a section gives a warning to confirm losing names in current active section
+
+
+bubble animations using matter js
+https://codersblock.com/blog/javascript-physics-with-matter-js/
+

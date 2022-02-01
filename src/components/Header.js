@@ -6,12 +6,13 @@
 
 
 import React from 'react';
+import './Header.css';
 
 function Header() {
     return ( 
-        <header className="App-header">
+        <header className="app-header">
             
-            <h1>PICK R NAME</h1>
+            <h1>POPcicle</h1>
             <h3>A RANDOM NAME PICKER</h3>
             
         </header>

@@ -4,7 +4,10 @@ function Footer() {
     return ( 
         
         <footer className = 'footer'>
-            <p> Created by Vlad Solokha </p>
+            <p>Created by <a 
+                href='https://vladsolokha.com'
+                target="_blank" rel="noopener noreferrer">Vlad Solokha</a> 
+            </p>
         </footer>
 
      )

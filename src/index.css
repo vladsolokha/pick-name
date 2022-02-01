@@ -1,11 +1,24 @@
-body {
+html, body {
+  height: 100vh;
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(
+    359deg,
+    hsl(240deg 100% 50%) 0%,
+    hsl(230deg 88% 60%) 8%,
+    hsl(220deg 76% 70%) 51%,
+    hsl(210deg 65% 80%) 95%,
+    hsl(200deg 53% 90%) 100%
+    ); 
+    /* from https://www.joshwcomeau.com/gradient-generator?colors=0000ff|d8eaf3&angle=359&colorMode=hsl&precision=3&easingCurve=0.09281437125748503|0.2323633982035928|1|0.75 */ 
+
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

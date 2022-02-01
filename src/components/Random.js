@@ -1,21 +1,22 @@
-// get all names from canvas component 
+// get all names from Bubbles component 
 // click (r key) handles random name selection 
 // send update to student phone 
 
 import React, { useState } from "react";
+import "./Random.sass";
 
 function Random() {
     
     const [randomName, setRandomName] = useState('')     
+    const [names, setNames] = useState([])
     
-    return ( 
-        <header className="App-header">
-            
-            <h1>PICK R NAME</h1>
-            <h3>A RANDOM NAME PICKER</h3>
-            
-        </header>
 
+    return ( 
+        <div className="random-container">
+            <button className="random-button" onClick={() => {
+                setRandomName(names[Math.floor(Math.random() * names.length)])
+            }}>POPcicle</button>
+        </div>
      )
 }
 

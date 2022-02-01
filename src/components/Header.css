@@ -1,0 +1,13 @@
+.app-header {
+    height: 70px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: inherit;
+}
+
+h3 {
+    font-size: 14px;
+    margin: inherit;
+}

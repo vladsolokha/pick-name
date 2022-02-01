@@ -1,103 +1,45 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import Header from './Header';
-import Footer from './Footer';
 import Sections from './Sections';
-
-const sections = [
-  {
-    id: 1,
-    studentNames: ['joe','bob','vlad','fierce'],
-  },
-  {
-    id: 2,
-    studentNames: ['fred','malachi','jerry','isaac']
-  }
-];  
-
+import Random from './Random';
+import Bubbles from './Bubbles';
+import Footer from './Footer';
+import {data} from '../data/data'
 
 function App() {
-  const [randomName, setRandomName] = useState(''); //sets state to get random name
-  const [selectedClass, setSelectedClass] = useState(1);
-  const [newNameField, setNewNameField] = useState('');
-  const [studentList, setStudentList] = useState(sections);
- 
-  const currentClassNames = studentList[Number(selectedClass - 1)];
-  const min = 0;
-  const max = currentClassNames.studentNames.length;
+  const [selectedSectionState, setSelectedSectionState] = useState(1)
 
-  const getRandomName = () => {
-    const randomNumber = Math.floor(Math.random() * (max - min) + min);
-    const getName = currentClassNames.studentNames[randomNumber];
-    setRandomName(getName);
+  //passed to Sections component, handles section selection
+  const selectedSection = (sectionData) => {
+    setSelectedSectionState(sectionData)
   }
-
-  const classHandler = (event) => {
-    setSelectedClass(parseInt(event.target.value));
-  }
-
-  console.log(selectedClass);
-  console.log('studentList', studentList);
   
-  const addName = (e) => {
-    if (newNameField === '') {
-      e.preventDefault()
-     }
-    const newStudentList = studentList.map(classObj => {
-      console.log('selectedClass', selectedClass, typeof selectedClass)
-      console.log('newNameField', newNameField)
-      if (classObj.id === selectedClass) {
-        classObj.studentNames.push(newNameField)
-      }
-      return classObj
-    })
-    console.log('newStudentList', newStudentList)
-    setStudentList(newStudentList)  
-  }
+  const names = data[selectedSectionState - 1].names
 
-
+  //see local storage data in console
+  localStorage.setItem('data', JSON.stringify(data));
+  
+  useEffect(() => {
+    console.log(localStorage.getItem('data'))
+    console.log('selectionSectionState', selectedSectionState)
+    console.log('names', names)
+  }, [selectedSectionState])
+  
   return (
     <div className="App">
       
       <Header />
-      <Sections selectecClass={selectedClass} classHandler={classHandler} />
-      <main className='main'>
+      
+      <Sections data={data} selectedSection={selectedSection}/>
+      
+      <Random />
 
-        <div className='addName'>
-          {/* <div>
-            <input type='text' placeholder='NEW STUDENT NAME'></input>
-            <button onClick={addName}>ADD</button>
-          </div> */}
-          <form className='inputName' onSubmit={addName}>
-            <input 
-              type='text' 
-              placeholder='NEW NAME' 
-              onChange={(e) =>  setNewNameField(e.target.value)} 
-              value={newNameField} 
-              >
-              </input>
-            <input type='submit' value='ADD'></input>
-          </form>
-        </div>
-        
-        <div className='randomName'>
-          <p>{randomName}</p>
-          <button onClick={getRandomName}>PICK R NAME</button>
-        </div>
-          
-        <div className='namesList'>
-          {
-            studentList[Number(selectedClass - 1)].studentNames.map(name => {
-              return (
-                <button key={name} className='name'> {name} </button> 
-              )
-            })
-          }
-        </div>
+      <Bubbles names={names}/>
 
-      </main>          
       <Footer />
+
     </div>
   );
 }
