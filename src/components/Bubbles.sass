@@ -1,11 +1,44 @@
 .bubbles-container
     display: flex
-
+    flex-direction: column
     margin: 10px
     border: 1px solid #000
-    height: calc(100vh - 275px)
+    border-radius: 25px
+    height: calc(100vh - 325px)
+
+.display-name
+    flex-direction: inherit
 
 .bubble
-    display: flex
-    flex-direction: column
-    justify-content: center
+    background-color: transparent
+    width: 70px
+    height: 70px
+    border-radius: 50%
+    margin: 10px
+    border: 1px solid black
+
+    &:hover
+        background-color: #000
+        color: #fff
+        transition: color 0.5s, background-color 0.5s
+
+.bubble-input
+    bottom: 50%
+    float: center
+
+.input-field
+    background-color: transparent
+    border: 1px solid black
+
+.input-field::placeholder
+        color: #00000094
+
+.submit-button
+    background-color: transparent
+    border: 1px solid black
+    cursor: pointer
+
+    &:hover
+        color: #fff
+        background-color: #000
+        transition: color 0.5s, background-color 0.5s
