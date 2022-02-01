@@ -1,6 +1,10 @@
 # POPcicle
 App that retrieves your classes and names of students from those classes. Then chooses a name at random.
 
+Live website is here: https://popcicle.netlify.app/
+![image](https://user-images.githubusercontent.com/48961183/152043376-f30d31fd-fa72-4143-8277-60785712ebf1.png)
+
+
 ## Vision
 Initially I want this to be a progressive web app.
 
