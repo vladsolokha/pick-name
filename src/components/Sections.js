@@ -2,17 +2,12 @@
 //singleclick handle names of section to bubbles
 //doubleclick handles deleting names from section
 
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import './Section.css'
 
-function Sections({data}) {
-  const [selected, setSelected] = useState(0)
-
-  useEffect(() => {
-    console.log('selected', selected)
-  }, [selected])
-
+function Sections({data, selectedSection}) {
+  
   const interp = (i) => (r) => `translate3d(0, ${5 * Math.sin(r + (i * 2 * Math.PI) / 1.6)}px, 0)`
 
   const { radians } = useSpring({
@@ -33,8 +28,8 @@ function Sections({data}) {
         value={section.number}
         style={{ transform: radians.to(interp(section.id)) }}
         className="single-button"
-        onClick={e => setSelected(e.target.value)}>
-          {section.number}
+        onClick={e => selectedSection(e.target.value)}>
+      {section.number}
       </animated.button>
     
   )

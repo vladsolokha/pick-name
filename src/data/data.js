@@ -7,22 +7,22 @@ export const data = [
     {
         id: '2',
         number: 2,
-        names: ['twan']
+        names: ['twan', 'tj', 'bob']
     },
     {
         id: '3',
         number: 3,
-        names: ['theodore']
+        names: ['theodore', 'hawkeye', 'banner']
     },
     {
         id: '4',
         number: 4,
-        names: ['ford']
+        names: ['ford', 'james', 'bond']
     },
     {
         id: '5',
         number: 5,
-        names: ['fried']
+        names: ['fried', 'chicken', 'pizza', 'burger', 'fries']
     },
     {
         id: '6',
