@@ -3,6 +3,8 @@ App that retrieves your classes and names of students from those classes. Then c
 
 Live website is here: https://popcicle.netlify.app/
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/926d02fe-2456-4ec0-9187-2c24f74d71f1/deploy-status)](https://app.netlify.com/sites/vladsolokha/deploys)
+
 ![image](https://user-images.githubusercontent.com/48961183/152043376-f30d31fd-fa72-4143-8277-60785712ebf1.png)
 
 
