@@ -9,33 +9,38 @@ import Footer from './Footer';
 import {data} from '../data/data'
 
 function App() {
-  const [selectedSectionState, setSelectedSectionState] = useState(1)
 
-  //passed to Sections component, handles section selection
-  const selectedSection = (sectionNumber) => {
-    setSelectedSectionState(sectionNumber)
+  const [selectedSection, setSelectedSection] = useState(1)
+
+  const [names, setNames] = useState(data[selectedSection - 1].names)
+
+  const clearNames = () => {
+    data[selectedSection - 1].names = []
+    setNames([...names])
   }
-  
-  const names = data[selectedSectionState - 1].names
 
-  //see local storage data in console
-  localStorage.setItem('data', JSON.stringify(data));
-  
-  useEffect(() => {
-    // console.log(localStorage.getItem('data'))
-    console.log('selectionSectionState', selectedSectionState)
-  }, [selectedSectionState])
+    useEffect(() => {
+    // Update names in Bubbles comp 
+    setNames(data[selectedSection - 1].names)
+    //set local storage data in console
+    localStorage.setItem('data', JSON.stringify(data));
+    console.log('this is local storage: ' + localStorage.getItem('data'))
+    console.log('selectionSection is: ', selectedSection)
+    console.log('current names in names list:', names)
+    console.log('this is data: ', JSON.stringify(data))
+    
+  }, [names, selectedSection])
   
   return (
     <div className="App">
       
       <Header />
       
-      <Sections data={data} selectedSection={selectedSection}/>
+      <Sections data={data}  setSelectedSection={setSelectedSection} clearNames={clearNames}/>
       
-      <Random names={names} selectedSection={selectedSectionState}/>
+      <Random names={names} />
 
-      <Bubbles names={names} selectedSection={selectedSectionState}/>
+      <Bubbles data={data} selectedSection={selectedSection} names={names} setNames={setNames}/>
 
       <Footer />
 

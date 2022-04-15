@@ -5,22 +5,22 @@
 import React, { useState, useEffect } from "react";
 import "./Random.sass";
 
-function Random({names, selectedSection}) {
-    const [randomName, setRandomName] = useState('')     
+function Random({names}) {
+    const [randomName, setRandomName] = useState('')
     const [namesState, setNamesState] = useState(names)
-    
+
     const handleRandomName = () => {
         setRandomName(namesState[Math.floor(Math.random() * names.length)])
     }
-
+ 
     useEffect(() => {
         setNamesState(names)
-    }, [selectedSection, names])
+    }, [names])
 
     return ( 
         <div className="random-container">
             <button 
-                className="random-button" 
+                    className="random-button" 
                 onClick={handleRandomName}>
             POPcicle
             </button>
