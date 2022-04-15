@@ -1,19 +1,17 @@
 /* TO-DO
-    - doubleclick handles deleting names from section
-    - turn red when list is modified
-    - click on red bubble to store names in localStorage
-    - when other components active, persist green active bubble
+  - doubleclick handles deleting names from section
+  - turn red when list is modified
+  - click on red bubble to store names in localStorage
+  - when other components active, persist green active bubble
 */
-
-
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import './Section.css'
 
-function Sections({data, selectedSection}) {
+function Sections({data, setSelectedSection, clearNames}) {
   
-  const handleClearAllNames = (e) => {
-    data.selectedSection.names = []
+  const handleClearAllNames = () => {
+    clearNames()
   }
   
   const interp = (i) => (r) => `translate3d(0, ${5 * Math.sin(r + (i * 2 * Math.PI) / 1.6)}px, 0)`
@@ -30,17 +28,15 @@ function Sections({data, selectedSection}) {
   })
 
   const sectionButton = data.map(section => 
-    
       <animated.button 
-        key={section.id}
+        key={section.number}
         value={section.number}
-        style={{ transform: radians.to(interp(section.id)) }}
+        style={{ transform: radians.to(interp(section.number)) }}
         className="single-button"
-        onClick={e => selectedSection(e.target.value)}
+        onClick={e => setSelectedSection(e.target.value)}
         onDoubleClick={e => handleClearAllNames(e.target.value)}>
-      {section.number}
+          {section.number}
       </animated.button>
-    
   )
 
   return (

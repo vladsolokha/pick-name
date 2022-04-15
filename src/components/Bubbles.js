@@ -6,64 +6,64 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './Bubbles.sass';
 
-function Bubbles({names, selectedSection}) {
+function Bubbles({names, setNames}) {
     const [inputOn, setInputOn] = useState(false)
     const [inputValue, setInputValue] = useState('')
-    const [namesState, setNamesState] = useState(names)
+    
     const handleEsc = useCallback((e) => {
         if(e.keyCode === 27) {
             setInputOn(false)
         }
     }, []);
     
-    
-    const handleAddName = () => { setInputOn(true) }
-    
-    const handleSubmitName = (e) => {
-        setInputOn(false)
-        setNamesState([...namesState, e])
+    const handleInputOn = () => { 
+        setInputOn(true)
+    }
+
+    const handleAddName = (e) => {
+        e.preventDefault()
+        names.push(inputValue)
+        setNames([...names])
         setInputValue('')
+        setInputOn(false)
     }
     
     const handleRemoveName = (e) => {
-        namesState.splice(namesState.indexOf(e), 1)
-        setNamesState([...namesState])
+        names.splice(names.indexOf(e), 1)
+        setNames([...names])
     }
     
     useEffect(() => {
-        setNamesState(names)
-        console.log('namesState is: ', namesState)
-        
+        // Escape to hide input, always listen
         document.addEventListener('keydown', handleEsc, false)
-        
         return () => {
             document.removeEventListener('keydown', handleEsc, false)
         }
-    }, [selectedSection, names, namesState, handleEsc])
+    }, [handleEsc])
     
     return ( 
         
         <div 
             className='bubbles-container'
-            onClick={handleAddName}>
+            onClick={handleInputOn}>
             
-            <div className='display-name'>
-                {namesState.map(name =>
+            <div className='display-names'>
+                {names.map((name, index) =>
                     <button 
                         className="bubble" 
-                        key={name} 
+                        key={index.toString()} 
                         value={name} 
-                        onDoubleClick={e => handleRemoveName(e.target.value)}>
+                        onDoubleClick={e => {handleRemoveName(e.target.value)}}>
                     {name}
-                    </button>)
-                }
+                    </button>
+                )}
             </div>
             
             {inputOn && 
-            
-            <div className="bubble-input">
-                <form onSubmit={e => handleSubmitName(inputValue)}>
+                <div className="bubble-input">
+                    <form>
                     <input
+                        autoFocus
                         className='input-field' 
                         type="text"
                         value={inputValue}
@@ -74,13 +74,12 @@ function Bubbles({names, selectedSection}) {
                         minLength="2"
                         maxLength="10">
                     </input>
-                    <button className='submit-button' type="submit">ADD</button>
-                </form>
-            </div>
+                    <button 
+                        className='submit-button' onClick={handleAddName} type='submit'>ADD</button>
+                    </form>
+                </div>
             }
-
         </div>
-    
     )
 }
 
