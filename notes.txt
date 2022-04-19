@@ -81,3 +81,21 @@ If user selects another section, a warning appears to confirm losing names in cu
 bubble animations using matter js
 https://codersblock.com/blog/javascript-physics-with-matter-js/
 
+First sharing with Sam Mate and Sam Zeigler
+Feedback from Zeigler
+
+[4/15/2022 2:15 PM] Sam Ziegler
+Love it!! What an awesome start. 
+Couple things I see right away:
+1. It's not clear how to edit a name of an existing student bubble or delete
+2. It would be cool to have a mode where you have two boxes of students: students who have already been selected and students who are still in the pool. If you could drag students from one to the other that would be cool too
+3. I wonder if you could get the color of the button / selected name to change each time it randomizes. This would give feedback on when it did successfully run a randomization but came up with the same name twice (as opposed to.. you just misclicked and it didnt actually run)
+4. When you add 4+ rows of bubbles, the "made by vlad" line doesn't stay at the bottom, it writes over some of the bubbles
+
+next steps
+Move footer to the top
+User clicks on name of bubble to edit a name 
+Have 2 boxes of students, default horizontal and mobile vertical
+Chosen names go into second 'chosen' box 
+User can drag bubbles to reorder them
+After user clicks on random, it changes to another color

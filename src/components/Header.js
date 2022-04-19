@@ -14,7 +14,6 @@ function Header() {
             
             <h1>POPcicle</h1>
             <h3>A RANDOM NAME PICKER</h3>
-            
         </header>
 
      )

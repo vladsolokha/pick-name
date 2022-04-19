@@ -8,6 +8,7 @@ import './Bubbles.sass';
 
 function Bubbles({names, setNames}) {
     const [inputOn, setInputOn] = useState(false)
+    const [editBubbleValue, setEditBubbleValue] = useState('')
     const [inputValue, setInputValue] = useState('')
     
     const handleEsc = useCallback((e) => {
@@ -32,7 +33,12 @@ function Bubbles({names, setNames}) {
         names.splice(names.indexOf(e), 1)
         setNames([...names])
     }
-    
+    const handleEditName = (e) => {
+        if (e.key === 'Enter') {
+            names.splice(names.indexOf(e),1,editBubbleValue)
+        }
+        setNames([...names])
+    }
     useEffect(() => {
         // Escape to hide input, always listen
         document.addEventListener('keydown', handleEsc, false)
@@ -47,38 +53,38 @@ function Bubbles({names, setNames}) {
             className='bubbles-container'
             onClick={handleInputOn}>
             
-            <div className='display-names'>
-                {names.map((name, index) =>
-                    <button 
-                        className="bubble" 
-                        key={index.toString()} 
-                        value={name} 
-                        onDoubleClick={e => {handleRemoveName(e.target.value)}}>
-                    {name}
-                    </button>
-                )}
-            </div>
-            
-            {inputOn && 
-                <div className="bubble-input">
-                    <form>
+        {inputOn && 
+            <div className="bubble-input">
+                <form>
                     <input
-                        autoFocus
                         className='input-field' 
                         type="text"
                         value={inputValue}
                         onChange={e => setInputValue(e.target.value)} 
                         placeholder="ENTER NAME"
-                        autoComplete="name"
                         size="10"
                         minLength="2"
                         maxLength="10">
                     </input>
                     <button 
                         className='submit-button' onClick={handleAddName} type='submit'>ADD</button>
-                    </form>
-                </div>
-            }
+                </form>
+            </div>
+        }
+        <div className='display-names'>
+            {names.map((name, index) =>
+                <input
+                    className="bubble" 
+                    type='text'
+                    key={index.toString()} 
+                    value={editBubbleValue} 
+                    onChange={e => {setEditBubbleValue(e.target.value)}}
+                    onKeyPress={(e) => {handleEditName(e.target.value)}}
+                    onDoubleClick={e => {handleRemoveName(e.target.value)}}/>
+            )} 
+
+        </div>
+            
         </div>
     )
 }
