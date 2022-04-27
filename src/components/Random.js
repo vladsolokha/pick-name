@@ -1,5 +1,5 @@
 // get all names from Bubbles component 
-// click (r key) handles random name selection 
+// click (alt+r key) handles random name selection when component in focus
 // send update to student phone 
 
 import React, { useState, useEffect } from "react";

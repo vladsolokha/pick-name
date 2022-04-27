@@ -1,6 +1,7 @@
 /* TO-DO
     - Add store namesState to localStorage
     - Add animate bubbles with matter.js
+    - If bubble is in focus/active disable dblclick
 */
 
 import React, { useCallback, useEffect, useState } from 'react';
@@ -10,7 +11,8 @@ function Bubbles({names, setNames}) {
     const [inputOn, setInputOn] = useState(false)
     const [editBubbleValue, setEditBubbleValue] = useState('')
     const [inputValue, setInputValue] = useState('')
-    
+    const [duplicateNameCount, setDuplicateNameCount] = useState(1)
+    const [bubbleState, setBubbleState] = useState('inactive')
     const handleEsc = useCallback((e) => {
         if(e.keyCode === 27) {
             setInputOn(false)
@@ -23,7 +25,14 @@ function Bubbles({names, setNames}) {
 
     const handleAddName = (e) => {
         e.preventDefault()
+        // includes method is a quick way to check whether the entered name was already present in names and returns true if there are duplicate names. 
+        // Duplicate names will throw off the map method when redering duplicate keys.
+        if (names.includes(inputValue)) {
+            names.push(inputValue+duplicateNameCount)
+            setDuplicateNameCount(duplicateNameCount + 1)
+        } else {
         names.push(inputValue)
+        }
         setNames([...names])
         setInputValue('')
         setInputOn(false)
@@ -34,9 +43,7 @@ function Bubbles({names, setNames}) {
         setNames([...names])
     }
     const handleEditName = (e) => {
-        if (e.key === 'Enter') {
-            names.splice(names.indexOf(e),1,editBubbleValue)
-        }
+        names.splice(names.indexOf(e),1,editBubbleValue)
         setNames([...names])
     }
     useEffect(() => {
@@ -67,24 +74,38 @@ function Bubbles({names, setNames}) {
                         maxLength="10">
                     </input>
                     <button 
-                        className='submit-button' onClick={handleAddName} type='submit'>ADD</button>
+                        className='submit-button' 
+                        onClick={handleAddName} 
+                        type='submit'
+                    >
+                        ADD
+                    </button>
                 </form>
             </div>
         }
         <div className='display-names'>
-            {names.map((name, index) =>
-                <input
-                    className="bubble" 
-                    type='text'
-                    key={index.toString()} 
-                    value={editBubbleValue} 
-                    onChange={e => {setEditBubbleValue(e.target.value)}}
-                    onKeyPress={(e) => {handleEditName(e.target.value)}}
-                    onDoubleClick={e => {handleRemoveName(e.target.value)}}/>
-            )} 
-
+            {names.map((name) =>
+                {if (bubbleState === 'inactive') {
+                    return <div
+                        className="bubble" 
+                        key={name} 
+                        value={name} 
+                        onClick={setBubbleState('active')}
+                    ></div>
+                }}
+                
+                {isBubbleSelected &&
+                    <div 
+                        className='edit-bubble'
+                        onClick={e => setEditBubbleValue(e.target.value)}
+                    >
+                        Edit
+                    </div>
+                }
+            </div>
+            )}
         </div>
-            
+        
         </div>
     )
 }

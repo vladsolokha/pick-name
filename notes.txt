@@ -99,3 +99,5 @@ Have 2 boxes of students, default horizontal and mobile vertical
 Chosen names go into second 'chosen' box 
 User can drag bubbles to reorder them
 After user clicks on random, it changes to another color
+
+convert useState in Bubbles component to useReducer for several states 
