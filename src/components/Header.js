@@ -12,8 +12,9 @@ function Header() {
     return ( 
         <header className="app-header">
             
-            <h1>POPcicle</h1>
-            <h3>A RANDOM NAME PICKER</h3>
+            <h1>POPcircle</h1>
+            <h3>Random name picker for schools, classrooms, teachers, and educators.</h3>
+            <h3>Make lists and groups of names, then pick a random name.</h3>
             
         </header>
 
