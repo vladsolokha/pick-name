@@ -1,7 +1,7 @@
-# POPcicle
+# POPcircle
 App that retrieves your classes and names of students from those classes. Then chooses a name at random.
 
-Live website is here: https://popcicle.netlify.app/
+Live website is here: https://POPcircle.netlify.app/
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/926d02fe-2456-4ec0-9187-2c24f74d71f1/deploy-status)](https://app.netlify.com/sites/vladsolokha/deploys)
 
@@ -37,7 +37,7 @@ Extention: Random student groups generator. Can generate groups of 2 up to 6.
 Extention: A random student cannot be called twice in a row until at leat 10 other students are called first.
 
 ## How to run the code locally
-Option 1: Go to link https://pick-name.netlify.app
+Option 1: Go to link https://POPcircle.netlify.app
 Option 2: 
   Clone the code into your preferred IDE (like VS code).
   In terminal and directory of the project run 'npm install' (install npm dependencies).
